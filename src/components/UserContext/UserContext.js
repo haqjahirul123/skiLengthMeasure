@@ -5,7 +5,7 @@ export const UserContext = createContext();
 export const UserProvider = (props) => {
   
     const [users, setUsers] = useState([
-    { length: '100', age_group1: '4' }
+    { length: '200', age_group1: '4' }
    
   ]);
 

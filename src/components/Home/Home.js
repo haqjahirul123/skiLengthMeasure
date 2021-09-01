@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const Home = () => {
   const [users, setUser] = useContext(UserContext);
-  const [cal, setCal] = useState([]);
+  //const [cal, setCal] = useState([]);
 
   // const measure=()=>{
   //   let a=parseInt(users.user.id)
@@ -25,9 +25,11 @@ const Home = () => {
   return (
     <div>
       <Link to="/create">
-        <Button className="bg cont">
+      <div className="d-grid gap-2">
+        <Button className="bg cont abc" size="lg">
           New Calcullation
         </Button>
+      </div>
       </Link>
 
       <Table striped bordered>
@@ -49,16 +51,16 @@ const Home = () => {
             // const d=parseInt(user.age_group3)
            const abc=(a,b)=>{
              while(!NaN){
-              if(b<=4 && b>=0 ){
-                return 0+a+b
+              if(b<=4 && b>=0 && a<=207 && a>0 ){
+              return ` This SKI is for 0-4 years old and total length is ${0+a+b}`
   
                }
-                else if(b<=8 && b>=5 ){
-                return 10+a+b
+                else if(b<=8 && b>=5 && a<=207 && a>0 ){
+                return `This SKI is for 5-8 years old and total length is ${10+a+b}`
   
                }
                else{
-                 return 20+a+b
+                 return ` This SKI is for Classic and total length is ${20+a+b}` 
                }
 
              }

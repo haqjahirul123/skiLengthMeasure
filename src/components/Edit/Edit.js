@@ -10,89 +10,63 @@ import { useState } from "react";
 const Edit = () => {
   const [users, setUser] = useContext(UserContext);
   const { length } = useParams();
-  const user = users.filter((user) => user.length == length);
+  let user = users.filter((user) => user.length == length);
   console.log(user[0])
 
   const [age_group1, setage_group1] = useState(user[0].age_group1);
-  // const [age_group2, setage_group2] = useState(user[0].age_group2);
-  // const [age_group3, setage_group3] = useState(user[0].age_group3);
-  
+  // const [age, setNewage]=useState("")
+   
 
-  const editage_group1 = (e) => {
- 
-      setage_group1(e.target.value);
-      console.log(age_group1)
-      const edited_age_group1 = age_group1;
-      user[0].age_group1 = edited_age_group1; 
+  // const editage_group1 = (e) => {
+  //     // const typeChange= parseInt(e.target.value)
+  //     // setage_group1(typeChange);
+  //     setNewage(e.target.value)
+  //     const updated={length:user[0].length, age_group1: age}
+  //     setage_group1(e.target.value);
+  //     console.log(age_group1)
+  //     // const edited_age_group1 = age_group1;
+     
     
-  };
-
-  // const editage_group2 = (e) => {
-  //   setage_group2(e.target.value);
-  //   const edited_age_group2 = age_group2;
-  //   user[0].age_group2 = edited_age_group2;
   // };
 
-  // const editage_group3 = (e) => {
-  //   setage_group3(e.target.value);
-  //   const edited_age_group3 = age_group3;
-  //   user[0].age_group3 = edited_age_group3;
-  // };
-
-  const editUser = (e) => {
-    e.preventDefault();
-    setUser([...users, {length:length, age_group1:age_group1}]);
+  const editNumber = (e) => {
+    user[0].age_group1 = age_group1; 
+    console.log(age_group1)
+    //e.preventDefault();
+    // setUser([...users, {length:length, age_group1:age_group1}])
+    setUser(users);
   };
 
   return (
     <div className="edit">
-      <Form>
-        <Form.Group>
+      <Form >
+        
+         <Form.Group>
           <Form.Label>
-            <h1>Body length : {user[0].length}</h1>
+            <h1>LENGTH: {user[0].length}</h1>
           </Form.Label>
         </Form.Group>
-
         <Form.Group>
-          <Form.Label>Enter AGE</Form.Label>
+          <Form.Label>AGE</Form.Label>
           <Form.Control
             type="number"
             age_group1="age_group1"
             value={age_group1}
-            onChange={editage_group1}
+            onChange={ e =>  setage_group1(e.target.value)}
             placeholder={user[0].age_group1}
           />
         </Form.Group>
-        {/* <Form.Group>
-          <Form.Label>age_group2</Form.Label>
-          <Form.Control
-            type="text"
-            age_group1="age_group2"
-            // value={age_group2}
-            onChange={editage_group2}
-            placeholder={user[0].age_group2}
-          />
-        </Form.Group> */}
-        {/* <Form.Group>
-          <Form.Label>age_group3</Form.Label>
-          <Form.Control
-            type="text"
-            age_group1="age_group3"
-            // value={age_group3}
-            onChange={editage_group3}
-            placeholder={user[0].age_group3}
-          />
-        </Form.Group> */}
+       
          <Link to="/">
-          <Button onSubmit={()=>editUser} className="bg cont" >
-            Edit User
+          <Button onClick={editNumber} type="button" className="bg cont" >
+            Edit 
           </Button>  
-          <Button className="bg cont">
+          <Button className="bg cont" type="submit">
             Back to Home
           </Button>
           </Link>
-      </Form>
-    </div>
+     </Form>
+   </div>
   );
 };
 
